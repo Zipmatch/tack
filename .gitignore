@@ -5,6 +5,7 @@
 .srl
 .ssl
 .terraform
+.python-version
 
 terraform.tfplan
 terraform.tfstate*
