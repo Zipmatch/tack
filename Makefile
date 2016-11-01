@@ -55,6 +55,7 @@ DIR_SSL := .cfssl
 ## Run `terraform plan` only
 all: prereqs init plan
 	@echo "${GREEN}✓ terraform portion of 'make all' has completed ${NC}\n"
+	@echo "${GREEN}✓ You can run 'make commit' when you are happy ${NC}\n"
 
 ## generate key-pair, variables and then `terraform apply`
 commit: prereqs create-keypair ssl init apply
