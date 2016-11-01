@@ -8,11 +8,11 @@ NC := \033[0m
 
 # ∨∨∨∨∨∨∨∨∨∨∨∨∨∨∨∨∨∨∨∨∨∨∨∨∨∨∨∨∨∨∨∨∨∨∨∨∨∨∨∨∨∨∨
 
-AWS_REGION ?= us-west-2
+AWS_REGION ?= ap-southeast-1
 COREOS_CHANNEL ?= stable
 COREOS_VM_TYPE ?= hvm
 
-CLUSTER_NAME ?= test
+CLUSTER_NAME ?= zipmatch-services
 AWS_EC2_KEY_NAME ?= kz8s-$(CLUSTER_NAME)
 
 INTERNAL_TLD := ${CLUSTER_NAME}.kz8s
@@ -27,13 +27,13 @@ INTERNAL_TLD := ${CLUSTER_NAME}.kz8s
 # - http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html#VPC_Sizing
 # - https://www.terraform.io/docs/providers/aws/r/vpc.html#cidr_block
 #
-CIDR_PODS ?= "10.2.0.0/16"
-CIDR_SERVICE_CLUSTER ?= "10.3.0.0/24"
-K8S_SERVICE_IP ?= 10.3.0.1
-K8S_DNS_IP ?= 10.3.0.10
+CIDR_PODS ?= "172.31.34.0/24"
+CIDR_SERVICE_CLUSTER ?= "172.31.35.0/24"
+K8S_SERVICE_IP ?= 172.31.35.1
+K8S_DNS_IP ?= 172.31.35.10
 
-CIDR_VPC ?= "10.0.0.0/16"
-ETCD_IPS ?= 10.0.10.10,10.0.10.11,10.0.10.12
+CIDR_VPC ?= "172.31.0.0/16"
+ETCD_IPS ?= 172.31.34.254,172.31.34.253,172.31.34.252
 
 # Alternative:
 # CIDR_PODS ?= "172.15.0.0/16"
