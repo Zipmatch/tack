@@ -52,9 +52,14 @@ DIR_SSL := .cfssl
 	@./scripts/init-addons
 	@echo "${GREEN}✓ initialize add-ons - success ${NC}\n"
 
-## generate key-pair, variables and then `terraform apply`
-all: prereqs create-keypair ssl init apply
+## Run `terraform plan` only
+all: prereqs init plan
 	@echo "${GREEN}✓ terraform portion of 'make all' has completed ${NC}\n"
+	@echo "${GREEN}✓ You can run 'make commit' when you are happy ${NC}\n"
+
+## generate key-pair, variables and then `terraform apply`
+commit: prereqs create-keypair ssl init apply
+	@echo "${GREEN}✓ terraform portion of 'make commit' has completed ${NC}\n"
 	@$(MAKE) wait-for-cluster
 	@$(MAKE) .addons
 	@$(MAKE) create-addons
@@ -148,4 +153,4 @@ wait-for-cluster:
 include makefiles/*.mk
 
 .DEFAULT_GOAL := help
-.PHONY: all clean create-addons create-busybox instances journal prereqs ssh ssh-bastion ssl status test wait-for-cluster
+.PHONY: all commit clean create-addons create-busybox instances journal prereqs ssh ssh-bastion ssl status test wait-for-cluster
